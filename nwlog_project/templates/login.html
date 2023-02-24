@@ -1,0 +1,106 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Dashboard">
+    <meta name="author" content="Nationwide Log">
+    <!-- Title -->
+    <title>Nationwide Log</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{% static 'assets/images/logo/favicon.png' %}">
+    <!-- Bootstrap Stylesheet -->
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+    <!-- Icons -->
+    <link rel="stylesheet" href="{% static 'assets/icon-fontawesome/css/all.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/icon-bootstrap/bootstrap-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/icon-boxicons/css/boxicons.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/icon-remixicon/fonts/remixicon.css' %}">
+    <!-- Plugin -->
+    <link rel="stylesheet" href="{% static 'assets/vendor/metismenu-master/metisMenu.min.css' %}">
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+</head>
+
+<body>
+<div class="sign-in-page">
+    {% for message in messages %}
+
+    <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+      <strong>{{message}}</strong>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endfor %}
+
+
+    <div id="particles-js"></div>
+    <div class="container-fluid p-0">
+        <div class="row g-0">
+            <div class="col-md-6 col-xl-4">
+                <div class="sign-in-from">
+                    <img src="{% static 'assets/images/logo/logo-large.png' %}" class="img-fluid d-block mx-auto mb-3" alt="">
+                    <form action="/signin/" method="post" class="needs-validation" novalidate>
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1">Email Address</label>
+                            <input type="email" name="email" class="form-control mb-0" id="exampleInputEmail1"
+                                   placeholder="Enter Email" required>
+                            <div class="invalid-feedback">Enter Email</div>
+                        </div>
+                        <div class="mb-3 overflow-hidden">
+                            <label for="exampleInputPassword1">Password</label>
+                            <a href="/forgotpassword" class="float-end">Forgot Password?</a>
+                            <input type="password" name="password" class="form-control mb-0" id="exampleInputPassword1"
+                                   placeholder="Password" required>
+                            <div class="invalid-feedback">Enter Password</div>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <div class="align-self-center">
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input">Remember
+                                        Me
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="align-self-center">
+                                <button type="submit" class="btn btn-sm btn-primary">Sign in</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Jquery Js -->
+<script src="{% static 'assets/js/jquery-1.12.4.js' %}"></script>
+<!-- Popper Js -->
+<script src="{% static 'assets/js/popper.min.js' %}"></script>
+<!-- Bootstrap Js -->
+<script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+<!-- Plugin -->
+<script src="{% static 'assets/vendor/particle-js/particles.min.js' %}"></script>
+<script src="{% static 'assets/vendor/particle-js/app.js' %}"></script>
+<script>
+    (function () {
+        'use strict'
+        var forms = document.querySelectorAll('.needs-validation')
+        Array.prototype.slice.call(forms)
+            .forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+                    form.classList.add('was-validated')
+                }, false)
+            })
+    })()
+</script>
+</body>
+
+</html>

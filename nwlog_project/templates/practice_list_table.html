@@ -1,0 +1,14 @@
+{% for row in rows %}
+    <tr>
+        <td>{{row.name}}</td>
+        <td>{{row.email_id}}</td>
+        <td>{{row.phone}}</td>
+        <td>
+            <ul class="list-inline">
+                <li class="list-inline-item"><a href="#editPrac" class="editPrc" data-id="{{row.id}}" title="Edit"><i class='bx bx-edit'></i></a></li>
+                <li class="list-inline-item"><a href="#deletePrac" class="deletePrc" data-id="{{row.id}}" title="Detele"><i
+                            class='bx bx-trash text-danger'></i></a></li>
+            </ul>
+        </td>
+    </tr>
+{% endfor %}
